@@ -1,41 +1,37 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
-import SelectedCountry from "./SelectedCountry";
+import { withRouter } from "react-router-dom";
+import { compose } from "redux";
 
 class FetchCountries extends React.Component {
-  state = {
-    country: "",
-  };
-
   componentDidMount() {
     this.props.fetchCountries();
+    // this.props.apiConfig();
+    console.log(this.props);
   }
 
   displayCountries() {
     const { countries } = this.props;
-
-    return countries.map(e => {
+    return Object.values(countries).map(e => {
       return (
-        <option
-          className="text"
-          key={e.ISO2}
-          value={e.Country}
-          data-tokens={`${e.Country}`}
-        >
+        <option key={e.ISO2} value={e.ISO2}>
           {e.Country}
         </option>
       );
     });
   }
 
+  chooseCountry = country => {
+    this.props.history.push(`/country/${country}`);
+  };
+
   render() {
     return (
       <div>
-        <select onChange={e => this.setState({ country: e.target.value })}>
+        <select onChange={e => this.chooseCountry(e.target.value)}>
           {this.displayCountries()}
         </select>
-        <SelectedCountry name={this.state} />
       </div>
     );
   }
@@ -47,4 +43,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, actions)(FetchCountries);
+export default compose(
+  withRouter,
+  connect(mapStateToProps, actions)
+)(FetchCountries);
