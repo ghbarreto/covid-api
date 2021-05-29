@@ -3,7 +3,7 @@ import {
   SELECTED_COUNTRY,
   API_CONFIG,
   SUMMARY,
-} from "../actions/types";
+} from '../actions/types';
 
 export default function (state = [], action) {
   switch (action.type) {
@@ -14,7 +14,7 @@ export default function (state = [], action) {
     case API_CONFIG:
       return action.payload;
     case SUMMARY:
-      return { ...state, ["Summary"]: action.payload };
+      return { ...state, global: action.payload };
     default:
       return state;
   }

@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { Line } from "react-chartjs-2";
-import _ from "lodash";
+import React, { useEffect } from 'react';
+import { Line } from 'react-chartjs-2';
+import _ from 'lodash';
 
 const PieChart = ({ active, info, apiConfig }) => {
   const chart = () => {
@@ -15,10 +15,10 @@ const PieChart = ({ active, info, apiConfig }) => {
             labels: data,
             datasets: [
               {
-                label: "Number of cases",
+                label: 'Number of cases',
                 data: data,
-                backgroundColor: ["rgba(255, 99, 132, 0.2)"],
-                borderColor: ["rgba(255, 99, 132, 1)"],
+                backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+                borderColor: ['rgba(255, 99, 132, 1)'],
                 borderWidth: 1,
               },
             ],
@@ -46,26 +46,7 @@ const PieChart = ({ active, info, apiConfig }) => {
       </div>
     );
   };
-  const detailedInformation = () => {
-    const { countries } = info;
-    // const country = [];
-    // const a = _.uniq(country);
-
-    // console.log(a);
-
-    // countries.map(e => {
-    //   country.push(e.Country);
-    // });
-
-    return <h1>e</h1>;
-  };
-  return (
-    <div>
-      {chart()}
-
-      <h1></h1>
-    </div>
-  );
+  return <div>{chart()}</div>;
 };
 
 export default PieChart;

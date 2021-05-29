@@ -1,14 +1,14 @@
-import React from "react";
-import { connect } from "react-redux";
-import * as actions from "../../actions";
-import { withRouter } from "react-router-dom";
-import { compose } from "redux";
+import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
+
+import WorldInfo from '../status/WorldInfo';
 
 class FetchCountries extends React.Component {
   componentDidMount() {
     this.props.fetchCountries();
-    // this.props.apiConfig();
-    console.log(this.props);
   }
 
   displayCountries() {
@@ -29,9 +29,13 @@ class FetchCountries extends React.Component {
   render() {
     return (
       <div>
-        <select onChange={e => this.chooseCountry(e.target.value)}>
+        <select key="select" onChange={e => this.chooseCountry(e.target.value)}>
+          <option defaultValue key="choose">
+            Choose
+          </option>
           {this.displayCountries()}
         </select>
+        <WorldInfo />
       </div>
     );
   }

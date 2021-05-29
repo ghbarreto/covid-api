@@ -1,11 +1,10 @@
-import React from "react";
-import { Route, BrowserRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import * as actions from "../actions";
+import React from 'react';
+import { Route, BrowserRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
-import FetchCountries from "./countries/FetchCountries";
-import SelectedCountry from "./countries/SelectedCountry";
-import PieChart from "./countries/PieChart";
+import FetchCountries from './countries/FetchCountries';
+import SelectedCountry from './countries/SelectedCountry';
 
 class App extends React.Component {
   render() {
@@ -18,4 +17,4 @@ class App extends React.Component {
   }
 }
 
-export default connect(null, actions)(App);
+export default App;
