@@ -11,9 +11,6 @@ class WorldInfo extends React.Component {
   returnInformation() {
     const { summary } = this.props;
     if (summary) {
-      console.log(typeof summary.Countries);
-      console.log(summary.Global);
-
       return (
         <div>
           <div>New Cases: {summary.Global.NewConfirmed}</div>
