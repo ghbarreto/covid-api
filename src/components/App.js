@@ -5,11 +5,13 @@ import * as actions from '../actions';
 
 import FetchCountries from './countries/FetchCountries';
 import SelectedCountry from './countries/SelectedCountry';
+import Header from './Header';
 
 class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
+        <Header />
         <Route exact path="/" component={FetchCountries} />
         <Route exact path="/country/:country" component={SelectedCountry} />
       </BrowserRouter>

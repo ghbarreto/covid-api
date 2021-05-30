@@ -1,10 +1,10 @@
-import covid from "../apis/keys";
+import covid from '../apis/keys';
 import {
   FETCH_COUNTRIES,
   SELECTED_COUNTRY,
   API_CONFIG,
   SUMMARY,
-} from "./types";
+} from './types';
 
 export const apiConfig = () => async dispatch => {
   const response = await covid.get();
@@ -15,11 +15,14 @@ export const apiConfig = () => async dispatch => {
 export const fetchCountries = () => async dispatch => {
   const response = await covid.get(`/countries`);
 
-  dispatch({ type: FETCH_COUNTRIES, payload: response.data });
+  setTimeout(
+    () => dispatch({ type: FETCH_COUNTRIES, payload: response.data }),
+    600
+  );
 };
 
 export const desiredCountry = name => async dispatch => {
-  const reg = name.country.replace(/%20/g, "").replace(/ /g, "");
+  const reg = name.country.replace(/%20/g, '').replace(/ /g, '');
   const response = await covid.get(`/country/${reg}`);
 
   dispatch({ type: SELECTED_COUNTRY, payload: response.data });
@@ -28,5 +31,5 @@ export const desiredCountry = name => async dispatch => {
 export const Summary = () => async dispatch => {
   const response = await covid.get(`/summary`);
 
-  dispatch({ type: SUMMARY, payload: response.data });
+  setTimeout(() => dispatch({ type: SUMMARY, payload: response.data }), 600);
 };

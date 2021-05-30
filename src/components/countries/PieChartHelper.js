@@ -6,6 +6,10 @@ const PieChartHelper = ({ data }) => {
     const dataDisplay = data.map(e => {
       return e;
     });
+    if (dataDisplay.length === 0) {
+      return <div>Data not found</div>;
+    }
+
     return (
       <div>
         <Line

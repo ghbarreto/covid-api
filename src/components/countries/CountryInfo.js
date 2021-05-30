@@ -16,33 +16,44 @@ class CountryInfo extends React.Component {
       return this.props.summary.Countries.map(e => {
         if (e.CountryCode === country) {
           return (
-            <div key="code" className="ui message">
-              <div className="ui ">
-                <h2 className="ui right aligned header">
-                  {date.format(new Date(e.Date), 'ddd, DD MMM YYYY')}
+            <div key="code">
+              <div className="ui">
+                <div className="ui ">
+                  <h4 className="ui right aligned header">
+                    Updated: {date.format(new Date(e.Date), 'ddd, DD MMM YYYY')}
+                  </h4>
+                </div>
+                <h2
+                  className="ui header"
+                  style={{ display: 'flex', justifyContent: 'center' }}
+                >
+                  <div
+                    className="content"
+                    style={{ display: 'inline-grid', gap: '10px' }}
+                  >
+                    <img
+                      src={`https://www.countryflags.io/${e.CountryCode}/shiny/64.png`}
+                    />
+                    {e.Country}
+                  </div>
                 </h2>
               </div>
-              <h2 class="ui header">
-                <div class="content">
-                  <img
-                    src={`https://www.countryflags.io/${e.CountryCode}/shiny/64.png`}
-                  />
-                  {e.Country}
-                </div>
-              </h2>
 
-              <div class="ui cards" style={{ width: '250px' }}>
-                <div class="card">
-                  <div class="content">
-                    <div class="header">Total Confirmed</div>
-                    <div class="description">
+              <div
+                className="ui link cards"
+                style={{ justifyContent: 'center', marginTop: '30px' }}
+              >
+                <div className="card">
+                  <div className="content">
+                    <div className="header">Total Confirmed</div>
+                    <div className="description">
                       <NumberFormat
                         thousandSeparator={true}
                         value={e.TotalConfirmed}
                         displayType={'text'}
                       />
                       <span style={{ margin: '20px', color: 'salmon' }}>
-                        <i class="arrow up icon"></i>
+                        <i className="arrow up icon"></i>
                         <NumberFormat
                           thousandSeparator={true}
                           value={e.NewConfirmed}
@@ -53,17 +64,17 @@ class CountryInfo extends React.Component {
                   </div>
                 </div>
 
-                <div class="card">
-                  <div class="content">
-                    <div class="header">Deaths</div>
-                    <div class="description">
+                <div className="card">
+                  <div className="content">
+                    <div className="header">Deaths</div>
+                    <div className="description">
                       <NumberFormat
                         thousandSeparator={true}
                         value={e.TotalDeaths}
                         displayType={'text'}
                       />
                       <span style={{ margin: '20px', color: 'salmon' }}>
-                        <i class="arrow up icon"></i>
+                        <i className="arrow up icon"></i>
                         <NumberFormat
                           thousandSeparator={true}
                           value={e.NewDeaths}
@@ -74,10 +85,10 @@ class CountryInfo extends React.Component {
                   </div>
                 </div>
 
-                <div class="card">
-                  <div class="content">
-                    <div class="header">Recovered</div>
-                    <div class="description">
+                <div className="card">
+                  <div className="content">
+                    <div className="header">Recovered</div>
+                    <div className="description">
                       <NumberFormat
                         thousandSeparator={true}
                         value={e.TotalRecovered}
