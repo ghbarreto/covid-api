@@ -8,7 +8,6 @@ class SelectedCountry extends React.Component {
   componentDidMount() {
     const country = this.props.match.params;
     country.country.replace(/%20/g, '').replace(/ /g, '');
-    console.log(this.props);
     this.props.desiredCountry(country);
   }
 
@@ -17,27 +16,30 @@ class SelectedCountry extends React.Component {
     const recovered = [];
     const deaths = [];
     const confirmed = [];
-    const countryName = this.props.match.params.country;
 
-    const { countries } = Object.values(this.props.countries.countries).map(
-      e => {
+    const iterateObjects = this.props.countries.countries;
+
+    if (iterateObjects.selected) {
+      const countries = Object.values(iterateObjects.selected).map(e => {
         activeArr.push(e.Active);
         recovered.push(e.Recovered);
         deaths.push(e.Deaths);
         confirmed.push(e.Confirmed);
-      }
-    );
-    return (
-      <div>
-        <PieChart
-          active={activeArr}
-          deaths={deaths}
-          recovered={recovered}
-          confirmed={confirmed}
-          info={this.props.countries}
-        />
-      </div>
-    );
+      });
+      return (
+        <div>
+          <PieChart
+            active={activeArr}
+            deaths={deaths}
+            recovered={recovered}
+            confirmed={confirmed}
+            info={this.props.countries}
+          />
+        </div>
+      );
+    }
+
+    return <div>Loading</div>;
   };
 
   getMoreInfo = () => {
@@ -56,6 +58,7 @@ class SelectedCountry extends React.Component {
 function mapStateToProps(state) {
   return {
     countries: state,
+    selected: state.countries.selected,
   };
 }
 

@@ -4,8 +4,6 @@ import _ from 'lodash';
 import PieChartHelper from './PieChartHelper';
 
 const PieChart = ({ active, deaths, recovered, confirmed }) => {
-  console.log(active[0]);
-
   if (active[0] || deaths[0] || recovered[0] || confirmed[0] === undefined) {
     return <div>Country not supported by API</div>;
   }

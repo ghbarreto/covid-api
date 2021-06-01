@@ -1,8 +1,8 @@
 import {
   FETCH_COUNTRIES,
   SELECTED_COUNTRY,
-  API_CONFIG,
   SUMMARY,
+  COUNTRY_TERRITORIES_INFO,
 } from '../actions/types';
 
 export default function (state = [], action) {
@@ -10,11 +10,11 @@ export default function (state = [], action) {
     case FETCH_COUNTRIES:
       return action.payload;
     case SELECTED_COUNTRY:
-      return action.payload;
-    case API_CONFIG:
-      return action.payload;
+      return { ...state, selected: action.payload };
     case SUMMARY:
       return { ...state, global: action.payload };
+    case COUNTRY_TERRITORIES_INFO:
+      return { ...state, territories: action.payload };
     default:
       return state;
   }
