@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import date from 'date-and-time';
+import Card from '../Card';
 
 class WorldInfo extends React.Component {
   componentDidMount() {
@@ -12,24 +12,31 @@ class WorldInfo extends React.Component {
     const { summary } = this.props;
     if (summary) {
       return (
-        <div>
-          <div>New Cases: {summary.Global.NewConfirmed}</div>
-          <div>New Deaths: {summary.Global.NewDeaths}</div>
-          <div>New Recovered: {summary.Global.NewRecovered}</div>
-          <div>Total Confirmed: {summary.Global.TotalConfirmed}</div>
-          <div>Total Deaths: {summary.Global.TotalDeaths}</div>
-          <div>Total Recovered: {summary.Global.TotalRecovered}</div>
-          <div>
-            Last Updated:
-            {date.format(new Date(summary.Global.Date), 'ddd, DD MMM YYYY')}
-          </div>
-        </div>
+        <React.Fragment>
+          <Card
+            title="Cases"
+            value={summary.Global.TotalConfirmed}
+            newValue={summary.Global.NewConfirmed}
+          />
+
+          <Card
+            title="Deaths"
+            value={summary.Global.TotalDeaths}
+            newValue={summary.Global.NewDeaths}
+          />
+
+          <Card
+            title="Recovered"
+            value={summary.Global.TotalRecovered}
+            recovered={summary.Global.NewRecovered}
+          />
+        </React.Fragment>
       );
     }
   }
 
   render() {
-    return <div>{this.returnInformation()}</div>;
+    return this.returnInformation() || <div></div>;
   }
 }
 

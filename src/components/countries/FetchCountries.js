@@ -28,15 +28,20 @@ class FetchCountries extends React.Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <select key="select" onChange={e => this.chooseCountry(e.target.value)}>
           <option defaultValue key="choose">
             Choose
           </option>
           {this.displayCountries()}
         </select>
-        <WorldInfo />
-      </div>
+        <div
+          className="ui link cards"
+          style={{ justifyContent: 'center', marginTop: '30px' }}
+        >
+          <WorldInfo />
+        </div>
+      </React.Fragment>
     );
   }
 }

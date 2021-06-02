@@ -18,7 +18,10 @@ class DisplayTerritories extends React.Component {
       const keys = Object.keys(results);
 
       return keys.map(key => {
-        return <Card title={key} value={results[key]} description="Deaths" />;
+        if (key) {
+          return <Card title={key} value={results[key]} description="Deaths" />;
+        }
+        return <div>This country territories are not supported by the API</div>;
       });
     }
     return <div></div>;

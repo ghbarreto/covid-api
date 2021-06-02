@@ -1,7 +1,8 @@
 import React from 'react';
 import NumberFormat from 'react-number-format';
+import './Card.css';
 
-const Card = ({ title, value, newValue, description }) => {
+const Card = ({ title, value, newValue, description, recovered }) => {
   return (
     <div className="card">
       <div className="content">
@@ -22,6 +23,19 @@ const Card = ({ title, value, newValue, description }) => {
               <NumberFormat
                 thousandSeparator={true}
                 value={newValue || null}
+                displayType={'text'}
+              />
+            </span>
+          ) : (
+            <div> </div>
+          )}
+
+          {recovered ? (
+            <span style={{ margin: '20px', color: 'green' }}>
+              <i className="arrow up icon"></i>
+              <NumberFormat
+                thousandSeparator={true}
+                value={recovered}
                 displayType={'text'}
               />
             </span>
