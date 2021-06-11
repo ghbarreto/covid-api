@@ -1,29 +1,29 @@
-import React from 'react';
-import NumberFormat from 'react-number-format';
-import './Card.css';
+import React from "react";
+import NumberFormat from "react-number-format";
+import "./Card.css";
 
 const Card = ({ title, value, newValue, description, recovered }) => {
   return (
     <div className="card">
       <div className="content">
         <div className="header">{title}</div>
-        <div className="description">
+        <div className="description recovered">
           {!description ? (
             <NumberFormat
               thousandSeparator={true}
               value={value}
-              displayType={'text'}
+              displayType={"text"}
             />
           ) : (
             <div></div>
           )}
           {newValue ? (
-            <span style={{ margin: '20px', color: 'salmon' }}>
+            <span style={{ margin: "20px", color: "salmon" }}>
               <i className="arrow up icon"></i>
               <NumberFormat
                 thousandSeparator={true}
                 value={newValue || null}
-                displayType={'text'}
+                displayType={"text"}
               />
             </span>
           ) : (
@@ -31,12 +31,12 @@ const Card = ({ title, value, newValue, description, recovered }) => {
           )}
 
           {recovered ? (
-            <span style={{ margin: '20px', color: 'green' }}>
+            <span style={{ margin: "20px", color: "green" }}>
               <i className="arrow up icon"></i>
               <NumberFormat
                 thousandSeparator={true}
                 value={recovered}
-                displayType={'text'}
+                displayType={"text"}
               />
             </span>
           ) : (
@@ -46,15 +46,16 @@ const Card = ({ title, value, newValue, description, recovered }) => {
           {description && title && value && !newValue ? (
             <div>
               <img
-                style={{ width: '20px', height: '20px' }}
+                style={{ width: "20px", height: "20px" }}
                 src="https://cdn.iconscout.com/icon/free/png-256/coronavirus-death-2389061-2014539.png"
                 alt=""
               />
-              <span style={{ margin: '20px' }}>
+
+              <span style={{ margin: "20px" }}>
                 <NumberFormat
                   thousandSeparator={true}
                   value={value || null}
-                  displayType={'text'}
+                  displayType={"text"}
                 />
               </span>
             </div>

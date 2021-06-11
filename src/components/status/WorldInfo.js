@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../../actions';
-import Card from '../Card';
+import React from "react";
+import { connect } from "react-redux";
+import * as actions from "../../actions";
+import Card from "../Card";
 
 class WorldInfo extends React.Component {
   componentDidMount() {

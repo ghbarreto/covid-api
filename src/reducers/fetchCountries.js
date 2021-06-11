@@ -3,12 +3,12 @@ import {
   SELECTED_COUNTRY,
   SUMMARY,
   COUNTRY_TERRITORIES_INFO,
-} from '../actions/types';
+} from "../actions/types";
 
 export default function (state = [], action) {
   switch (action.type) {
     case FETCH_COUNTRIES:
-      return action.payload;
+      return { ...state, fetch: action.payload };
     case SELECTED_COUNTRY:
       return { ...state, selected: action.payload };
     case SUMMARY:
