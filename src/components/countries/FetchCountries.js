@@ -1,10 +1,10 @@
-import React from "react";
-import { connect } from "react-redux";
-import * as actions from "../../actions";
-import { withRouter } from "react-router-dom";
-import { compose } from "redux";
+import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 
-import WorldInfo from "../status/WorldInfo";
+import WorldInfo from '../status/WorldInfo';
 
 class FetchCountries extends React.Component {
   componentDidMount() {
@@ -25,7 +25,7 @@ class FetchCountries extends React.Component {
       });
     }
 
-    return <div>Loading</div>;
+    return <div>Loading...</div>;
   }
 
   chooseCountry = country => {
@@ -43,7 +43,7 @@ class FetchCountries extends React.Component {
         </select>
         <div
           className="ui link cards"
-          style={{ justifyContent: "center", marginTop: "30px" }}
+          style={{ justifyContent: 'center', marginTop: '30px' }}
         >
           <WorldInfo />
         </div>
